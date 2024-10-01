@@ -10,7 +10,7 @@ while True:
     ret,frame=cap.read()
     if not ret:
         break
-    results=model(frame,device='mps')
+    results=model(frame,device='cpu')
     result=results[0]
     bboxes=np.array(result.boxes.xyxy.cpu(),dtype='int')
     classes=np.array(result.boxes.cls.cpu(),dtype='int')
